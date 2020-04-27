@@ -1,0 +1,10 @@
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-bionic AS runtime-env
+
+# System.Drawing dependencies
+RUN apt-get update \
+    && apt-get install -y --allow-unauthenticated \
+    # System.Drawing dependencies
+        libc6-dev libgdiplus libx11-dev \
+    # OpenCV dependencies
+        libavutil-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev libgtk2.0-0 libopenexr22 libtesseract-dev libdc1394-22-dev \
+     && rm -rf /var/lib/apt/lists/*
